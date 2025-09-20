@@ -94,12 +94,12 @@ graph TB
 # 📋 Requirements
 System Requirements
 
-PHP: 8.2+ with extensions: redis, mysql, gd, curl
-Composer: 2.0+
-Database: MySQL 8.0+ or PostgreSQL 13+
-Cache: Redis 7.0+
-Queue: Redis (recommended) or Database
-Process Manager: Supervisor (production)
+PHP: 8.2+ with extensions: redis, mysql, gd, curl  
+Composer: 2.0+  
+Database: MySQL 8.0+  
+Cache: Redis 6.0+  
+Queue: Redis  
+Process Manager: Supervisor  
 
 Development Requirements
 
@@ -204,20 +204,20 @@ curl -X GET "http://your-app.com/api/v1/orders/1"
 ### Optimization Strategies
 ### Database Optimizations
 
-Strategic indexing on frequently queried columns
-Query optimization with eager loading
-Database connection pooling
-Read replicas for analytics queries
+Strategic indexing on frequently queried columns  
+Query optimization with eager loading  
+Database connection pooling  
+Read replicas for analytics queries  
 
 ### Redis Optimizations
 
-Atomic operations for concurrent updates
-Memory-efficient data structure
-Pipelining for bulk operations
+Atomic operations for concurrent updates  
+Memory-efficient data structure  
+Pipelining for bulk operations  
 
 ### Queue Optimizations
 
-Priority-based job processing
-Chunked batch processing
-Worker scaling based on load
-Failed job retry strategies
+Priority-based job processing  
+Chunked batch processing  
+Worker scaling based on load  
+Failed job retry strategies  

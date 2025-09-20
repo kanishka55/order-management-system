@@ -17,7 +17,7 @@ Contributing
 License
 
 
-✨# Features
+# ✨Features
 🔄 Order Processing System
 
 Large CSV Import: Chunked processing for files with 100K+ records
@@ -52,7 +52,8 @@ Supervisor Integration: Process management and auto-restart
 Comprehensive Logging: Structured logging with separate channels
 Error Handling: Robust exception handling with detailed reporting
 
-🏗️ # System Architecture
+# 🏗️ System Architecture
+```mermaid
 graph TB
     subgraph "Client Layer"
         CLI[Artisan Commands]
@@ -79,6 +80,89 @@ graph TB
     JOBS --> REDIS
     JOBS --> MYSQL
     HORIZON --> REDIS
+```
 
-    Key Components:
-ComponentTechnologyPurposeWeb FrameworkLaravel 10.xApplication foundationDatabaseMySQL 8.0+Persistent data storageCache & QueuesRedis 7.0+Real-time data & job processingQueue ManagementLaravel HorizonQueue monitoring & scalingProcess ManagementSupervisorWorker process managementAPI LayerLaravel SanctumAPI authentication & routing
+# Key Components:
+| **Component**        | **Technology**    | **Purpose**                           |
+|----------------------|-------------------|---------------------------------------|
+| **Web Framework**     | Laravel 10.x      | Application foundation                |
+| **Database**          | MySQL 8.0+        | Persistent data storage               |
+| **Cache & Queues**    | Redis 7.0+        | Real-time data & job processing       |
+| **Queue Management**  | Laravel Horizon   | Queue monitoring & scaling            |
+| **Process Management**| Supervisor         | Worker process management             |
+| **API Layer**         | Laravel Sanctum   | API authentication & routing          |
+
+# 📋 Requirements
+System Requirements
+
+PHP: 8.2+ with extensions: redis, mysql, gd, curl
+Composer: 2.0+
+Database: MySQL 8.0+ or PostgreSQL 13+
+Cache: Redis 7.0+
+Queue: Redis (recommended) or Database
+Process Manager: Supervisor (production)
+
+Development Requirements
+
+Node.js: 18+ (for asset compilation)
+
+# 🚀 Installation
+
+1. Install Dependencies
+```bash
+# PHP dependencies
+composer install
+
+# Node dependencies (if using frontend)
+npm install
+```
+2. Database Setup
+```bash
+# Run migrations
+php artisan migrate
+
+# Seed sample data
+php artisan db:seed
+```
+3. Queue Setup
+```bash
+# Create jobs table
+php artisan queue:table
+php artisan migrate
+
+# Install Horizon
+php artisan horizon:install
+```
+4. Start Services
+```bash
+# Start Laravel development server
+php artisan serve
+
+# Start queue workers (separate terminal)
+php artisan horizon
+```
+# Supervisor Configuration
+Create /etc/supervisor/conf.d/laravel-horizon.conf:
+
+# 📖 Usage
+CSV Order Import
+Import orders from CSV file:
+```bash
+php artisan orders:import /path/to/orders.csv
+```
+CSV Format:
+```bash
+customer_email,customer_name,order_number,total_amount,items
+john@example.com,"John Doe",ORD-001,299.99,"[{""sku"":""LAPTOP"",""quantity"":1,""unit_price"":299.99}]"
+```
+
+# Monitor Queue Processing
+```bash
+# Check Horizon status
+php artisan horizon:status
+
+# Monitor logs
+tail -f storage/logs/laravel.log
+```
+
+# 🔌 API Documentation

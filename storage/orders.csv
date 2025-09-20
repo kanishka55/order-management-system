@@ -1,0 +1,6 @@
+customer_email,customer_name,order_number,total_amount,items
+john@example.com,John Doe,ORD-001,1029.98,"[{""sku"":""LAP001"",""quantity"":1,""unit_price"":999.99},{""sku"":""MOU001"",""quantity"":1,""unit_price"":29.99}]"
+jane@example.com,Jane Smith,ORD-002,379.98,"[{""sku"":""MON001"",""quantity"":1,""unit_price"":299.99},{""sku"":""KEY001"",""quantity"":1,""unit_price"":79.99}]"
+mike@example.com,Mike Johnson,ORD-003,149.99,"[{""sku"":""HEAD001"",""quantity"":1,""unit_price"":149.99}]"
+sarah@example.com,Sarah Wilson,ORD-004,329.97,"[{""sku"":""MON001"",""quantity"":1,""unit_price"":299.99},{""sku"":""MOU001"",""quantity"":1,""unit_price"":29.99}]"
+tom@example.com,Tom Brown,ORD-005,1229.96,"[{""sku"":""LAP001"",""quantity"":1,""unit_price"":999.99},{""sku"":""KEY001"",""quantity"":1,""unit_price"":79.99},{""sku"":""HEAD001"",""quantity"":1,""unit_price"":149.99}]"

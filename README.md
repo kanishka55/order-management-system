@@ -17,7 +17,7 @@ Contributing
 License
 
 
-✨ Features
+✨# Features
 🔄 Order Processing System
 
 Large CSV Import: Chunked processing for files with 100K+ records
@@ -51,3 +51,34 @@ Laravel Horizon: Advanced queue monitoring and management
 Supervisor Integration: Process management and auto-restart
 Comprehensive Logging: Structured logging with separate channels
 Error Handling: Robust exception handling with detailed reporting
+
+🏗️ # System Architecture
+graph TB
+    subgraph "Client Layer"
+        CLI[Artisan Commands]
+        API[RESTful API]
+        WEB[Web Interface]
+    end
+    
+    subgraph "Application Layer"
+        CTRL[Controllers]
+        SERV[Services]
+        JOBS[Queue Jobs]
+    end
+    
+    subgraph "Infrastructure Layer"
+        REDIS[(Redis Cache/Queue)]
+        MYSQL[(MySQL Database)]
+        HORIZON[Laravel Horizon]
+    end
+    
+    CLI --> SERV
+    API --> CTRL
+    CTRL --> SERV
+    SERV --> JOBS
+    JOBS --> REDIS
+    JOBS --> MYSQL
+    HORIZON --> REDIS
+
+    Key Components:
+ComponentTechnologyPurposeWeb FrameworkLaravel 10.xApplication foundationDatabaseMySQL 8.0+Persistent data storageCache & QueuesRedis 7.0+Real-time data & job processingQueue ManagementLaravel HorizonQueue monitoring & scalingProcess ManagementSupervisorWorker process managementAPI LayerLaravel SanctumAPI authentication & routing
